@@ -15,25 +15,25 @@ public class UserController {
     }
 
     @GetMapping(value = "/users")
-    public String printUsersList(Model model) {
+    public String showAllUsers(Model model) {
         model.addAttribute("users", userService.getUsersList());
         return "users";
     }
 
     @GetMapping("/new")
-    public String newUser(Model model) {
+    public String addNewUser(Model model) {
         model.addAttribute("user", new User());
         return "new";
     }
 
     @PostMapping("/new")
-    public String createUser(@ModelAttribute("user") User user) {
+    public String createNewUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/users";
     }
 
     @GetMapping("/edit/{id}")
-    public String edit(Model model, @PathVariable("id") int id) {
+    public String editUser(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.getUserById(id));
         return "edit";
     }

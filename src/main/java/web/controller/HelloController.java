@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HelloController {
     @GetMapping(value = "/")
-    public String printWelcome(ModelMap model) {
+    public String showStartPage(ModelMap model) {
         String messages = "Show all users";
         model.addAttribute("messages", messages);
         return "index";
